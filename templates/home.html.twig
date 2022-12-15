@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    Toto
+
+    {% for todo in todos %}
+
+        Bonjour {{ todo.title }} <br>
+
+    {% endfor %}
+
+{% endblock %}
