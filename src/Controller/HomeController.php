@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -10,10 +11,10 @@ class HomeController extends AbstractController
 {
     #[Route("/")]
     public function index(HttpClientInterface $client) {
-        $todos = $client->request("GET", "https://jsonplaceholder.typicode.com/todos")->toArray();
+        $response = $client->request("GET", "https://jsonplaceholder.typicode.com/todos");
 
         return $this->render("home.html.twig", [
-            "todos" => $todos
+            "todos" => $response->toArray()
         ]);
     }
 
